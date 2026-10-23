@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Controle de Encomendas</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Controle de Encomendas</h1>
+        <p class="subtitle">Cadastre encomendas e calcule automaticamente os gastos.</p>
+      </div>
+    </header>
+
+    <section class="cards">
+      <article class="card">
+        <span>Encomendas</span>
+        <strong id="resumo-qtd">0</strong>
+      </article>
+      <article class="card">
+        <span>Gasto total</span>
+        <strong id="resumo-gasto">R$ 0,00</strong>
+      </article>
+      <article class="card">
+        <span>Média por encomenda</span>
+        <strong id="resumo-media">R$ 0,00</strong>
+      </article>
+    </section>
+
+    <section class="layout">
+      <form id="form-encomenda">
+        <h2>Nova encomenda</h2>
+        <div class="row">
+          <div>
+            <label for="cliente">Cliente / destinatário</label>
+            <input id="cliente" required placeholder="Nome da pessoa ou loja">
+          </div>
+          <div>
+            <label for="data">Data</label>
+            <input id="data" type="date" required>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="status">Status</label>
+            <select id="status">
+              <option>Pendente</option>
+              <option>Em trânsito</option>
+              <option>Entregue</option>
+            </select>
+          </div>
+          <div>
+            <label for="descricao">Descrição</label>
+            <input id="descricao" placeholder="O que está sendo encomendado">
+          </div>
+        </div>
+
+        <h2>Itens</h2>
+        <div id="itens"></div>
+        <button type="button" class="ghost" id="add-item">Adicionar item</button>
+
+        <h2>Outros gastos</h2>
+        <div class="row">
+          <div>
+            <label for="frete">Frete (R$)</label>
+            <input id="frete" type="number" min="0" step="0.01" value="0">
+          </div>
+          <div>
+            <label for="taxas">Taxas (R$)</label>
+            <input id="taxas" type="number" min="0" step="0.01" value="0">
+          </div>
+        </div>
+        <div class="full">
+          <label for="outros">Outros custos (R$)</label>
+          <input id="outros" type="number" min="0" step="0.01" value="0">
+        </div>
+
+        <div class="totals">
+          <p>Itens <span id="total-itens">R$ 0,00</span></p>
+          <p>Frete + taxas + outros <span id="total-extras">R$ 0,00</span></p>
+          <p class="grand">Total da encomenda <span id="total-geral">R$ 0,00</span></p>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="primary">Cadastrar encomenda</button>
+        </div>
+      </form>
+
+      <aside class="list-panel">
+        <h2>Encomendas cadastradas</h2>
+        <div id="lista"></div>
+      </aside>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
